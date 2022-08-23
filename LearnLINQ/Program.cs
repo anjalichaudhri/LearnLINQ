@@ -177,5 +177,11 @@ Console.WriteLine(isAnyPetName);
 Console.WriteLine($"are All array elements greater than 1? : {LINQAll.AreAllLargerThanOne(numbers)}");
 Console.WriteLine($"are All array elements names non empty? : {LINQAll.AreAllNonEmptyNames(pets)}");
 
+var isAnyPetNameRazor = (from pet in pets
+                        where pet.Name == "Razor"
+                        select pet.Id);
+
+// isAnyPetNameRazor.ForEach(Console.WriteLine);
+Console.WriteLine(string.Join(",",isAnyPetNameRazor));
 
 
