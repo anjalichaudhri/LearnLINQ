@@ -159,8 +159,10 @@ var petsTry = new List<string>();
 var pets = new[]
 {
     new Pet(1, "Billey", PetType.Cat, 1.1f),
-    new Pet(2, "Bunny", PetType.Fish, 2f),
-    new Pet(3, "Rex", PetType.Dog, 3f),
+    new Pet(9, "Bunny", PetType.Fish, 2f),
+    new Pet(8, "Rex", PetType.Dog, 3f),
+    new Pet(8, "Rex", PetType.Fish, 2f),
+    new Pet(5, "Rex", PetType.Lion, 5f),
     new Pet(4, "Razor", PetType.Fish, 1.4f)
 };
 
@@ -177,11 +179,16 @@ Console.WriteLine(isAnyPetName);
 Console.WriteLine($"are All array elements greater than 1? : {LINQAll.AreAllLargerThanOne(numbers)}");
 Console.WriteLine($"are All array elements names non empty? : {LINQAll.AreAllNonEmptyNames(pets)}");
 
-var isAnyPetNameRazor = (from pet in pets
-                        where pet.Name == "Razor"
-                        select pet.Id);
 
 // isAnyPetNameRazor.ForEach(Console.WriteLine);
-Console.WriteLine(string.Join(",",isAnyPetNameRazor));
+Console.WriteLine(string.Join(",",QuerySyntax.IsAnyPetNameRazor(pets)));
+Console.WriteLine("ordered Pets by name:");
+Console.WriteLine(String.Join(",",OrderBy.OrderedPetsByQuerySyntax(pets)));
+Console.WriteLine("Pets in descending order by name:");
+Console.WriteLine(String.Join(",", OrderBy.OrderedPetsByDescendingQuerySyntax(pets)));
+Console.WriteLine("ordered Pets by name and id:");
+Console.WriteLine(String.Join(",", OrderBy.OrderedByMultiplePropertiesQuerySyntax(pets)));
+Console.WriteLine("ordered Pets by name, id and weight :");
+Console.WriteLine(String.Join(",", OrderBy.OrderedMultiMethodSyntax(pets)));
 
 
