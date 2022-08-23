@@ -107,9 +107,11 @@ foreach(var word in shortWords)
 
 var people = new List<Person>
 {
-    new Person("John", "UK"),
-    new Person("Angel", "USA"),
-    new Person("Amy", "USA")
+    new Person("John", "UK", 18),
+    new Person("Angel", "USA", 18),
+    new Person("Amy", "USA", 20),
+    new Person("Rose","UAE", 18),
+    new Person("Alex","UK", 20)
 };
 
 /**
@@ -191,4 +193,16 @@ Console.WriteLine(String.Join(",", OrderBy.OrderedByMultiplePropertiesQuerySynta
 Console.WriteLine("ordered Pets by name, id and weight :");
 Console.WriteLine(String.Join(",", OrderBy.OrderedMultiMethodSyntax(pets)));
 
+var dict = GroupBy.SumOfPeopleGroupedAge(people);
 
+foreach (var kvp in dict)
+{
+    Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+}
+
+var filteredPeople = GroupBy.FirstLetterStartsWithR(people);
+
+foreach (var person in filteredPeople)
+{
+    Console.WriteLine("name : {0} ", person.Name);
+}
