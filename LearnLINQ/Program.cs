@@ -164,10 +164,17 @@ var pets = new[]
 {
     new Pet(1, "Billey", PetType.Cat, 1.1f),
     new Pet(9, "Bunny", PetType.Fish, 2f),
-    new Pet(8, "Rex", PetType.Dog, 3f),
+    new Pet(2, "Rex", PetType.Dog, 3f),
     new Pet(8, "Rex", PetType.Fish, 2f),
     new Pet(5, "Rex", PetType.Lion, 5f),
     new Pet(4, "Razor", PetType.Fish, 1.4f)
+};
+
+var petsAppointments = new[]
+{
+    new Appointment(101, new DateTime(2022,08, 28,10,0,0), 1),
+    new Appointment(102, new DateTime(2022,08, 28,2,0,0), 8)
+
 };
 
 var isAnyPetNamedBruce = pets.Any(p => p.Name == "Rex");
@@ -214,4 +221,10 @@ var joinData = Join.JoinByQuerySyntax(people, pets);
 foreach (var data in joinData ) 
 {
     Console.WriteLine(data);
+}
+
+var appointmentData = Join.JoinByMethodSyntax(pets, petsAppointments);
+foreach(var data in appointmentData)
+{
+    Console.WriteLine($" {data}");
 }
